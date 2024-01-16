@@ -1,0 +1,27 @@
+using UnityEngine;
+
+public class AutoMove : MonoBehaviour
+{
+    public float speed = 8f;
+    private Vector3 direction;
+
+    void Start()
+    {
+        SetRandomDirection();
+    }
+
+    void Update()
+    {
+        transform.Translate(direction * speed * Time.deltaTime);
+
+        if (Random.Range(0f, 1f) < 0.02f)
+        {
+            SetRandomDirection();
+        }
+    }
+
+    void SetRandomDirection()
+    {
+        direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+    }
+}
